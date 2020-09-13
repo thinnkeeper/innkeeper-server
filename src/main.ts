@@ -1,11 +1,9 @@
 import * as express from 'express';
 import * as bodyParser from 'body-parser';
 // import cors from 'cors';
+import { connectToDb } from './database';
 import router from './router';
-
-const config = {
-  PORT: 6668,
-};
+import * as config from './config.json';
 
 const app = express();
 
@@ -15,6 +13,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use('/rest', router);
 
-app.listen(config.PORT, () =>
-  console.log(`INNKEEPER Server listening at port ${config.PORT}!`),
-);
+app.listen(config.PORT, () => {
+  connectToDb();
+  console.log(`INNKEEPER Server listening at port ${config.PORT}!`);
+});

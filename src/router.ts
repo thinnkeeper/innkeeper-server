@@ -38,34 +38,34 @@ import {
 
 const router = express.Router();
 
-router.post('/actions/add', addActions);
-router.put('/actions/edit', editActions);
-router.delete('/actions/remove', removeActions);
-router.get('/actions/get', getActions);
+router.post('/actions', addActions);
+router.put('/actions', editActions);
+router.delete('/actions', removeActions);
+router.get('/actions', getActions);
 
-router.post('/events/add', addEvents);
-router.put('/events/edit', editEvents);
-router.delete('/events/remove', removeEvents);
-router.get('/events/get', getEvents);
+router.post('/events', addEvents);
+router.put('/events', editEvents);
+router.delete('/events', removeEvents);
+router.get('/events', getEvents);
 
-router.post('/locations/add', addLocations);
-router.put('/locations/edit', editLocations);
-router.delete('/locations/remove', removeLocations);
-router.get('/locations/get', getLocations);
+router.post('/locations', addLocations);
+router.put('/locations', editLocations);
+router.delete('/locations', removeLocations);
+router.get('/locations', getLocations);
 
-router.post('/items/add', addItems);
-router.put('/items/edit', editItems);
-router.delete('/items/remove', removeItems);
-router.get('/items/get', getItems);
+router.post('/items', addItems);
+router.put('/items', editItems);
+router.delete('/items', removeItems);
+router.get('/items', getItems);
 
-router.post('/enemies/add', addEnemies);
-router.put('/enemies/edit', editEnemies);
-router.delete('/enemies/remove', removeEnemies);
-router.get('/enemies/get', getEnemies);
+router.post('/enemies', addEnemies);
+router.put('/enemies', editEnemies);
+router.delete('/enemies', removeEnemies);
+router.get('/enemies', getEnemies);
 
-router.post('/npcs/add', addNpcs);
-router.put('/npcs/edit', editNpcs);
-router.delete('/npcs/remove', removeNpcs);
-router.get('/npcs/get', getNpcs);
+router.post('/npcs', addNpcs);
+router.put('/npcs', editNpcs);
+router.delete('/npcs', removeNpcs);
+router.get('/npcs', getNpcs);
 
 export default router;
