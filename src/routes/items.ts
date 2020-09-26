@@ -1,4 +1,4 @@
-import { BasicRoute } from '../types';
+import { Item } from '../types';
 import {
   getEntireCollection,
   getOne,
@@ -9,16 +9,19 @@ import {
   deleteOne,
   deleteMany,
 } from '../database';
-import { isArray } from 'util';
 
 const collection = 'items';
+
+type ItemsSchema = {
+  items: Item[];
+};
 
 /**
  * You can add more than one item at once.
  * @param req
  */
 export const add = async (req, res): Promise<void> => {
-  const items = req.body.items;
+  const { items }: ItemsSchema = req.body;
   // add the body validation!!!!
   let response;
 
@@ -28,7 +31,7 @@ export const add = async (req, res): Promise<void> => {
     });
     return;
   }
-  if (!isArray(items)) {
+  if (!Array.isArray(items)) {
     res.status(304).send({
       error: 'The body must be an array, even if you ',
     });
@@ -56,9 +59,11 @@ export const edit = async (req, res): Promise<void> => {
   const id = req.body.id;
   const item = await getOne(collection, id);
   const itemUpdated = {
-    ...item,
+    ...item[0],
     ...req.body,
   };
+  console.log(req.body);
+  console.log(itemUpdated);
   await upsertOne(collection, { id }, itemUpdated);
   res.status(200).send(itemUpdated);
 };
